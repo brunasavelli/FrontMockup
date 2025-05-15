@@ -42,7 +42,7 @@ export default function Alunos() {
                 );
                 setSessionStorage("alunosData", alunos);
                 setData({ alunos, loading: false, current: 1, pageSize: 5 });
-            } catch {
+            } catch(error) {
                 toast.error("Erro ao carregar alunos");
                 setData((d) => ({ ...d, loading: false }));
             }

@@ -1,7 +1,6 @@
 const isClient = typeof window !== 'undefined';
 
-// Pega informações
-export const getSessionsStorage = (key, initialValue) => {
+export const getSessionStorage = (key, initialValue) => {
     if (!isClient) return initialValue;
 
     const stored = sessionStorage.getItem(key);
@@ -9,9 +8,8 @@ export const getSessionsStorage = (key, initialValue) => {
     return stored ? JSON.parse(stored) : initialValue;
 }
 
-// Armazena informações
 export const setSessionStorage = (key, value) => {
-    if (!isClient) {
+    if (isClient) {
         sessionStorage.setItem(key, JSON.stringify(value));
     }
 }
